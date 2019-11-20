@@ -47,7 +47,7 @@ executors:
         default: "medium"
         type: enum
         enum: ["small", "medium", "medium+", "large", "xlarge"]
-    working_directory: ~/raiden
+    working_directory: ~/lumino
     docker:
       - image: circleci/python:<< parameters.py-version >>
     resource_class: << parameters.resource >>
@@ -63,7 +63,7 @@ executors:
     parameters:
       py-version:
         <<: *py-version-template
-    working_directory: ~/raiden
+    working_directory: ~/lumino
     environment:
       <<: *default-environment
 
@@ -257,8 +257,8 @@ jobs:
           set -e
           set -x
     - run:
-        name: Running Raiden Smoketest with << parameters.transport-layer >>
-        command: raiden --transport=<< parameters.transport-layer >> smoketest << parameters.additional-args >>
+        name: Running Lumino Smoketest with << parameters.transport-layer >>
+        command: lumino --transport=<< parameters.transport-layer >> smoketest << parameters.additional-args >>
 
   test:
     parameters:
